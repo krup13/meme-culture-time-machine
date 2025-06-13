@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeLord Chronos - Meme Culture Time Machine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <div class="era-switcher">
+        <button class="era-btn" data-era="1990s">1990s</button>
+        <button class="era-btn" data-era="2000s">2000s</button>
+        <button class="era-btn" data-era="2010s">2010s</button>
+        <button class="era-btn active" data-era="2020s">2020s</button>
+    </div>
+
+    <header>
+        <h1>MemeLord Chronos</h1>
+        <p class="tagline">Travel through internet eras</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#text-translator" class="nav-link active">Text Translator</a></li>
+            <li><a href="#image-transformer" class="nav-link">Image Time Warp</a></li>
+            <li><a href="#voice-converter" class="nav-link">Voice Converter</a></li>
+            <li><a href="#meme-generator" class="nav-link">Meme Generator</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="text-translator" class="feature-section active">
+            <h2>Era Translator</h2>
+            <div class="feature-container">
+                <div class="input-area">
+                    <textarea id="modern-text" placeholder="Enter your modern text here..."></textarea>
+                    <div class="controls">
+                        <select id="text-era">
+                            <option value="1990s">1990s Internet</option>
+                            <option value="2000s">2000s Internet</option>
+                            <option value="2010s">2010s Internet</option>
+                            <option value="2020s">2020s Internet</option>
+                        </select>
+                        <button id="translate-btn">Translate</button>
+                    </div>
+                </div>
+                <div class="output-area">
+                    <div class="output-header">
+                        <h3>Translation</h3>
+                        <div class="cringe-meter">
+                            <span>Cringe Meter: </span>
+                            <div class="cringe-bar">
+                                <div class="cringe-level" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="translated-text" class="output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="image-transformer" class="feature-section">
+            <h2>Aesthetic Time Warp</h2>
+            <div class="feature-container">
+                <div class="input-area">
+                    <div class="image-upload-area">
+                        <input type="file" id="image-input" accept="image/*">
+                        <label for="image-input" class="upload-label">
+                            <span class="upload-icon">📷</span>
+                            <span>Choose an image</span>
+                        </label>
+                        <div id="image-preview"></div>
+                    </div>
+                    <div class="controls">
+                        <select id="image-era">
+                            <option value="1990s">1990s Aesthetic</option>
+                            <option value="2000s">2000s Aesthetic</option>
+                            <option value="2010s">2010s Aesthetic</option>
+                            <option value="2020s">2020s Aesthetic</option>
+                        </select>
+                        <button id="transform-btn">Transform</button>
+                    </div>
+                </div>
+                <div class="output-area">
+                    <h3>Transformed Image</h3>
+                    <div id="transformed-image" class="output-content image-output"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="voice-converter" class="feature-section">
+            <h2>Voice Era Converter</h2>
+            <div class="feature-container">
+                <div class="input-area">
+                    <div class="voice-recorder">
+                        <button id="record-btn" class="record">
+                            <span class="mic-icon">🎤</span>
+                            <span class="record-text">Record</span>
+                        </button>
+                        <div id="recording-status">Not recording</div>
+                        <div id="audio-preview"></div>
+                    </div>
+                    <div class="controls">
+                        <select id="voice-era">
+                            <option value="1990s">1990s Voice</option>
+                            <option value="2000s">2000s Voice</option>
+                            <option value="2010s">2010s Voice</option>
+                            <option value="2020s">2020s Voice</option>
+                        </select>
+                        <button id="convert-voice-btn">Convert</button>
+                    </div>
+                </div>
+                <div class="output-area">
+                    <h3>Converted Voice</h3>
+                    <div id="converted-voice" class="output-content audio-output"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="meme-generator" class="feature-section">
+            <h2>Meme Format Generator</h2>
+            <div class="feature-container">
+                <div class="input-area">
+                    <div class="meme-template-selector">
+                        <h3>Select a template</h3>
+                        <div class="template-grid">
+                            <div class="template-item" data-template="drake">
+                                <img src="{{ url_for('static', filename='images/templates/drake_template_thumb.jpg') }}" alt="Drake Template">
+                                <span>Drake</span>
+                            </div>
+                            <div class="template-item" data-template="distracted_boyfriend">
+                                <img src="{{ url_for('static', filename='images/templates/distracted_boyfriend_template_thumb.jpg') }}" alt="Distracted Boyfriend">
+                                <span>Distracted Boyfriend</span>
+                            </div>
+                            <div class="template-item" data-template="doge">
+                                <img src="{{ url_for('static', filename='images/templates/doge_template_thumb.jpg') }}" alt="Doge">
+                                <span>Doge</span>
+                            </div>
+                            <div class="template-item" data-template="change_my_mind">
+                                <img src="{{ url_for('static', filename='images/templates/change_my_mind_template_thumb.jpg') }}" alt="Change My Mind">
+                                <span>Change My Mind</span>
+                            </div>
+                            <div class="template-item" data-template="success_kid">
+                                <img src="{{ url_for('static', filename='images/templates/success_kid_template_thumb.jpg') }}" alt="Success Kid">
+                                <span>Success Kid</span>
+                            </div>
+                            <div class="template-item" data-template="galaxy_brain">
+                                <img src="{{ url_for('static', filename='images/templates/galaxy_brain_template_thumb.jpg') }}" alt="Galaxy Brain">
+                                <span>Galaxy Brain</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-content-input">
+                        <input type="file" id="meme-image" accept="image/*">
+                        <textarea id="meme-text" placeholder="Enter text for meme (separate multiple text fields with | character)"></textarea>
+                        <button id="generate-meme-btn">Generate Meme</button>
+                    </div>
+                </div>
+                <div class="output-area">
+                    <h3>Generated Meme</h3>
+                    <div id="generated-meme" class="output-content image-output"></div>
+                    <div class="meme-info">
+                        <h4>Meme Archaeology</h4>
+                        <p id="meme-history"></p>
+                    </div>
+                    
+                    <!-- New YouTube integration section -->
+                    <div class="youtube-recommendations">
+                        <h4>Related Meme Videos</h4>
+                        <button id="search-youtube-btn">Find Related Videos</button>
+                        <div id="youtube-results"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="time-travel-feed" class="extra-section">
+            <h2>Time Travel Feed</h2>
+            <div class="time-feed-container">
+                <div class="time-feed-item">
+                    <div class="feed-era-tag">2020s</div>
+                    <div class="feed-content"></div>
+                </div>
+                <div class="time-feed-item">
+                    <div class="feed-era-tag">2010s</div>
+                    <div class="feed-content"></div>
+                </div>
+                <div class="time-feed-item">
+                    <div class="feed-era-tag">2000s</div>
+                    <div class="feed-content"></div>
+                </div>
+                <div class="time-feed-item">
+                    <div class="feed-era-tag">1990s</div>
+                    <div class="feed-content"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="era-indicator">Current Era: <span id="current-era">2020s</span></div>
+        <p>&copy; 2023 MemeLord Chronos - Time Travel Through Internet Culture</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui_switcher.js') }}"></script>
+</body>
+</html>

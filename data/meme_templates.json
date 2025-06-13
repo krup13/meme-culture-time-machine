@@ -1,0 +1,167 @@
+{
+  "drake": {
+    "name": "Drake Hotline Bling",
+    "description": "Drake appears to reject one option in favor of another.",
+    "type": "multi_panel",
+    "background": "drake_template.jpg",
+    "era": "2010s",
+    "text_fields": [
+      {
+        "position": [350, 120],
+        "font_size": 36,
+        "color": "black"
+      },
+      {
+        "position": [350, 380],
+        "font_size": 36,
+        "color": "black"
+      }
+    ],
+    "panels": []
+  },
+  "distracted_boyfriend": {
+    "name": "Distracted Boyfriend",
+    "description": "A man looks at another woman while his girlfriend looks at him disapprovingly.",
+    "type": "image_text",
+    "background": "distracted_boyfriend_template.jpg",
+    "era": "2010s",
+    "text_fields": [
+      {
+        "position": [160, 50],
+        "font_size": 30,
+        "color": "white"
+      },
+      {
+        "position": [370, 50],
+        "font_size": 30,
+        "color": "white"
+      },
+      {
+        "position": [280, 300],
+        "font_size": 30,
+        "color": "white"
+      }
+    ],
+    "image_fields": []
+  },
+  "change_my_mind": {
+    "name": "Change My Mind",
+    "description": "Steven Crowder sitting at a table with a sign challenging people to change his mind.",
+    "type": "text_only",
+    "background": "change_my_mind_template.jpg",
+    "era": "2010s",
+    "text_fields": [
+      {
+        "position": [250, 250],
+        "font_size": 28,
+        "color": "black"
+      }
+    ]
+  },
+  "doge": {
+    "name": "Doge",
+    "description": "Shiba Inu dog with colorful Comic Sans text.",
+    "type": "image_text",
+    "background": "doge_template.jpg",
+    "era": "2010s",
+    "text_fields": [
+      {
+        "position": [150, 50],
+        "font_size": 32,
+        "color": "red"
+      },
+      {
+        "position": [300, 150],
+        "font_size": 28,
+        "color": "green"
+      },
+      {
+        "position": [100, 250],
+        "font_size": 30,
+        "color": "blue"
+      },
+      {
+        "position": [250, 300],
+        "font_size": 26,
+        "color": "purple"
+      }
+    ],
+    "image_fields": []
+  },
+  "success_kid": {
+    "name": "Success Kid",
+    "description": "A toddler with a determined expression and clenched fist.",
+    "type": "text_only",
+    "background": "success_kid_template.jpg",
+    "era": "2000s",
+    "text_fields": [
+      {
+        "position": [250, 40],
+        "font_size": 36,
+        "color": "white"
+      },
+      {
+        "position": [250, 360],
+        "font_size": 36,
+        "color": "white"
+      }
+    ]
+  },
+  "galaxy_brain": {
+    "name": "Expanding Brain",
+    "description": "Four panels showing increasingly glowing brains representing enlightenment.",
+    "type": "text_only",
+    "background": "galaxy_brain_template.jpg",
+    "era": "2010s",
+    "text_fields": [
+      {
+        "position": [400, 100],
+        "font_size": 24,
+        "color": "white"
+      },
+      {
+        "position": [400, 300],
+        "font_size": 24,
+        "color": "white"
+      },
+      {
+        "position": [400, 500],
+        "font_size": 24,
+        "color": "white"
+      },
+      {
+        "position": [400, 700],
+        "font_size": 24,
+        "color": "white"
+      }
+    ]
+  },
+  "dancing_baby": {
+    "name": "Dancing Baby",
+    "description": "3D-rendered baby dancing, one of the first viral internet memes.",
+    "type": "text_only",
+    "background": "dancing_baby_template.gif",
+    "era": "1990s",
+    "text_fields": [
+      {
+        "position": [200, 30],
+        "font_size": 30,
+        "color": "yellow"
+      }
+    ]
+  },
+  "all_your_base": {
+    "name": "All Your Base Are Belong to Us",
+    "description": "From Zero Wing game, early internet meme.",
+    "type": "text_only",
+    "background": "all_your_base_template.jpg",
+    "era": "1990s",
+    "text_fields": [
+      {
+        "position": [320, 200],
+        "font_size": 32,
+        "color": "white"
+      }
+    ]
+  }
+}
