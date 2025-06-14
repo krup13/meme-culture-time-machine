@@ -108,3 +108,6 @@ htmlcov/
 *.rar
 *.tar
 *.zip
+
+# Security
+credentials/memelord-chronos-3cff6793c937.json

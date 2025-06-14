@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Culture Time Machine</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- Include any Font Awesome or other icon libraries if needed -->
 </head>
 <body>
     <div class="container">
         <!-- Era selection tabs -->
         <div class="era-tabs">
             <button class="era-tab" data-era="1990s">1990s</button>
-            <button class="era-tab active" data-era="2000s">2000s</button>
+            <button class="era-tab" data-era="2000s">2000s</button>
             <button class="era-tab" data-era="2010s">2010s</button>
             <button class="era-tab" data-era="2020s">2020s</button>
         </div>
@@ -43,10 +42,10 @@
                     <textarea id="text-input" placeholder="Type shit bro"></textarea>
                     <div class="button-group">
                         <select id="era-select" class="era-select">
+                            <option value="1990s">1990s Internet</option>
                             <option value="2000s">2000s Internet</option>
-                            <option value="1990s">1990s</option>
-                            <option value="2010s">2010s</option>
-                            <option value="2020s">2020s</option>
+                            <option value="2010s">2010s Internet</option>
+                            <option value="2020s">2020s Internet</option>
                         </select>
                         <button class="primary" id="translate-btn">Translate</button>
                     </div>
@@ -55,11 +54,12 @@
                     <div class="cringe-meter">
                         <div class="cringe-meter-label">Cringe Meter:</div>
                         <div class="meter-bar">
-                            <div class="meter-fill"></div>
+                            <div class="meter-fill" style="width: 50%;"></div>
                         </div>
                     </div>
+                    <!-- Modify the translation result div to use the new styling -->
                     <div class="result-box" id="translation-result">
-                        <div class="error-message">Error: Could not translate text.</div>
+                        <!-- If there's any translation result, it will appear here -->
                     </div>
                 </div>
             </div>
@@ -109,7 +109,6 @@
         <!-- Meme Generator Section -->
         <section class="section" id="meme-section" style="display:none;">
             <h2 class="section-title">Meme Generator</h2>
-            <!-- Meme generator content -->
             <div class="result-box" id="meme-result">
                 <!-- Generated memes will appear here -->
             </div>
@@ -118,6 +117,8 @@
 
     <!-- JavaScript to handle tab switching and functionality -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
 </body>
 </html>
             <div class="feature-container">
