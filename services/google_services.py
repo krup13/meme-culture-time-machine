@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from google.cloud import vision, speech
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
+import sys
 
 # Load environment variables
 load_dotenv()
@@ -13,10 +14,34 @@ class GoogleVisionService:
     """Service for Google Cloud Vision API integration"""
     
     def __init__(self):
-        # Initialize Vision client
-        # Note: This assumes you have GOOGLE_APPLICATION_CREDENTIALS set in your environment
-        # or you have a credentials.json file
-        self.client = vision.ImageAnnotatorClient()
+        # Define the credentials directory and file path
+        base_dir = os.path.dirname(os.path.dirname(__file__))
+        credentials_dir = os.path.join(base_dir, "credentials")
+        credentials_path = os.path.join(credentials_dir, "memelord-chronos-3cff6793c937.json")
+        
+        # Check if credentials directory exists
+        if not os.path.exists(credentials_dir):
+            os.makedirs(credentials_dir)
+            print(f"Created credentials directory at {credentials_dir}")
+            print("Please place your Google service account JSON file in this directory.")
+            sys.exit(1)
+        
+        # Check if credentials file exists
+        if not os.path.exists(credentials_path):
+            print(f"Error: Credentials file not found at {credentials_path}")
+            print("Please download your Google service account JSON file and save it as:")
+            print(credentials_path)
+            sys.exit(1)
+            
+        # Set the environment variable explicitly
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+        
+        try:
+            self.client = vision.ImageAnnotatorClient()
+            print("Successfully authenticated with Google Vision API")
+        except Exception as e:
+            print(f"Error initializing Google Vision client: {e}")
+            sys.exit(1)
     
     def analyze_image(self, image_file):
         """Analyze image content using Google Vision API"""
