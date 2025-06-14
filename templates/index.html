@@ -3,123 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemeLord Chronos - Meme Culture Time Machine</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Meme Culture Time Machine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Include any Font Awesome or other icon libraries if needed -->
 </head>
 <body>
-    <div class="era-switcher">
-        <button class="era-btn" data-era="1990s">1990s</button>
-        <button class="era-btn" data-era="2000s">2000s</button>
-        <button class="era-btn" data-era="2010s">2010s</button>
-        <button class="era-btn active" data-era="2020s">2020s</button>
-    </div>
+    <div class="container">
+        <!-- Era selection tabs -->
+        <div class="era-tabs">
+            <button class="era-tab" data-era="1990s">1990s</button>
+            <button class="era-tab active" data-era="2000s">2000s</button>
+            <button class="era-tab" data-era="2010s">2010s</button>
+            <button class="era-tab" data-era="2020s">2020s</button>
+        </div>
 
-    <header>
-        <h1>MemeLord Chronos</h1>
-        <p class="tagline">Travel through internet eras</p>
-    </header>
+        <!-- Header section -->
+        <header class="header">
+            <h1 class="app-title">
+                <span class="me">Me</span> 
+                <span class="chronos">ChRoNoS</span> 
+                <span class="xd">xD</span>
+            </h1>
+            <p class="subtitle">Travel through internet eras</p>
+        </header>
 
-    <nav>
-        <ul>
-            <li><a href="#text-translator" class="nav-link active">Text Translator</a></li>
-            <li><a href="#image-transformer" class="nav-link">Image Time Warp</a></li>
-            <li><a href="#voice-converter" class="nav-link">Voice Converter</a></li>
-            <li><a href="#meme-generator" class="nav-link">Meme Generator</a></li>
-        </ul>
-    </nav>
+        <!-- Navigation tabs -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" data-tab="text">Text Translator</div>
+            <div class="nav-tab" data-tab="image">Image Time Warp</div>
+            <div class="nav-tab" data-tab="voice">Voice Converter</div>
+            <div class="nav-tab" data-tab="meme">Meme Generator</div>
+        </div>
 
-    <main>
-        <section id="text-translator" class="feature-section active">
-            <h2>Era Translator</h2>
-            <div class="feature-container">
-                <div class="input-area">
-                    <textarea id="modern-text" placeholder="Enter your modern text here..."></textarea>
-                    <div class="controls">
-                        <select id="text-era">
-                            <option value="1990s">1990s Internet</option>
+        <!-- Text Translator Section -->
+        <section class="section" id="text-section">
+            <h2 class="section-title">Era Translator</h2>
+            <div class="row">
+                <div class="column">
+                    <textarea id="text-input" placeholder="Type shit bro"></textarea>
+                    <div class="button-group">
+                        <select id="era-select" class="era-select">
                             <option value="2000s">2000s Internet</option>
-                            <option value="2010s">2010s Internet</option>
-                            <option value="2020s">2020s Internet</option>
+                            <option value="1990s">1990s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="2020s">2020s</option>
                         </select>
-                        <button id="translate-btn">Translate</button>
+                        <button class="primary" id="translate-btn">Translate</button>
                     </div>
                 </div>
-                <div class="output-area">
-                    <div class="output-header">
-                        <h3>Translation</h3>
-                        <div class="cringe-meter">
-                            <span>Cringe Meter: </span>
-                            <div class="cringe-bar">
-                                <div class="cringe-level" style="width: 0%"></div>
-                            </div>
+                <div class="column">
+                    <div class="cringe-meter">
+                        <div class="cringe-meter-label">Cringe Meter:</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill"></div>
                         </div>
                     </div>
-                    <div id="translated-text" class="output-content"></div>
+                    <div class="result-box" id="translation-result">
+                        <div class="error-message">Error: Could not translate text.</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="image-transformer" class="feature-section">
-            <h2>Aesthetic Time Warp</h2>
-            <div class="feature-container">
-                <div class="input-area">
-                    <div class="image-upload-area">
-                        <input type="file" id="image-input" accept="image/*">
-                        <label for="image-input" class="upload-label">
-                            <span class="upload-icon">📷</span>
-                            <span>Choose an image</span>
-                        </label>
-                        <div id="image-preview"></div>
-                    </div>
-                    <div class="controls">
-                        <select id="image-era">
-                            <option value="1990s">1990s Aesthetic</option>
-                            <option value="2000s">2000s Aesthetic</option>
-                            <option value="2010s">2010s Aesthetic</option>
-                            <option value="2020s">2020s Aesthetic</option>
-                        </select>
-                        <button id="transform-btn">Transform</button>
+        <!-- Image Time Warp Section -->
+        <section class="section" id="image-section" style="display:none;">
+            <h2 class="section-title">Aesthetic Time Warp</h2>
+            <div class="image-container">
+                <div class="image-box">
+                    <div class="upload-icon">📷</div>
+                    <p class="image-placeholder">Choose an image</p>
+                    <input type="file" id="image-input" style="display:none;">
+                    <button class="secondary" id="upload-btn">Upload Image</button>
+                </div>
+                <div class="image-box">
+                    <div id="transformed-image" class="responsive-image">
+                        <!-- Transformed image will appear here -->
                     </div>
                 </div>
-                <div class="output-area">
-                    <h3>Transformed Image</h3>
-                    <div id="transformed-image" class="output-content image-output"></div>
-                </div>
+            </div>
+            <div class="button-group">
+                <select id="aesthetic-select">
+                    <option value="1990s">1990s Aesthetic</option>
+                    <option value="2000s">2000s Aesthetic</option>
+                    <option value="2010s">2010s Aesthetic</option>
+                    <option value="2020s">2020s Aesthetic</option>
+                </select>
+                <button class="secondary" id="detect-era-btn">Detect Era</button>
+                <button class="primary" id="transform-btn">Transform</button>
             </div>
         </section>
 
-        <section id="voice-converter" class="feature-section">
-            <h2>Voice Era Converter</h2>
-            <div class="feature-container">
-                <div class="input-area">
-                    <div class="voice-recorder">
-                        <button id="record-btn" class="record">
-                            <span class="mic-icon">🎤</span>
-                            <span class="record-text">Record</span>
-                        </button>
-                        <div id="recording-status">Not recording</div>
-                        <div id="audio-preview"></div>
-                    </div>
-                    <div class="controls">
-                        <select id="voice-era">
-                            <option value="1990s">1990s Voice</option>
-                            <option value="2000s">2000s Voice</option>
-                            <option value="2010s">2010s Voice</option>
-                            <option value="2020s">2020s Voice</option>
-                        </select>
-                        <button id="convert-voice-btn">Convert</button>
-                    </div>
-                </div>
-                <div class="output-area">
-                    <h3>Converted Voice</h3>
-                    <div id="converted-voice" class="output-content audio-output"></div>
-                </div>
+        <!-- Voice Converter Section -->
+        <section class="section" id="voice-section" style="display:none;">
+            <h2 class="section-title">Voice Era Converter</h2>
+            <div class="button-group">
+                <button class="action" id="record-btn">
+                    <span class="record-icon">🎤</span> Record
+                </button>
+            </div>
+            <div class="result-box" id="voice-result">
+                <!-- Converted voice will appear here -->
             </div>
         </section>
 
-        <section id="meme-generator" class="feature-section">
-            <h2>Meme Format Generator</h2>
+        <!-- Meme Generator Section -->
+        <section class="section" id="meme-section" style="display:none;">
+            <h2 class="section-title">Meme Generator</h2>
+            <!-- Meme generator content -->
+            <div class="result-box" id="meme-result">
+                <!-- Generated memes will appear here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript to handle tab switching and functionality -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
             <div class="feature-container">
                 <div class="input-area">
                     <div class="meme-template-selector">
@@ -201,6 +201,7 @@
     <footer>
         <div class="era-indicator">Current Era: <span id="current-era">2020s</span></div>
         <p>&copy; 2023 MemeLord Chronos - Time Travel Through Internet Culture</p>
+        <p>© 2023 MemeLord Chronos | Powered by Google Gemini AI</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>

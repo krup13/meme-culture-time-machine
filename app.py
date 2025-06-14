@@ -9,6 +9,7 @@ from models.meme_generator import MemeGenerator
 from utils.era_detector import EraDetector
 from utils.cringe_meter import CringeMeter
 from services.google_services import GoogleVisionService, GoogleSpeechService, YouTubeService
+from services.gemini_service import GeminiService
 
 # Load environment variables
 load_dotenv()
@@ -24,10 +25,11 @@ meme_generator = MemeGenerator()
 era_detector = EraDetector()
 cringe_meter = CringeMeter()
 
-# Initialize Google API services
+# Initialize services
 vision_service = GoogleVisionService()
 speech_service = GoogleSpeechService()
 youtube_service = YouTubeService()
+gemini_service = GeminiService()  # Replace OpenAI with Gemini
 
 @app.route('/')
 def index():
@@ -36,11 +38,18 @@ def index():
 @app.route('/translate-text', methods=['POST'])
 def translate_text():
     data = request.json
-    text = data.get('text', '')
-    era = data.get('era', '2000s')
+    if not data or 'text' not in data or 'era' not in data:
+        return jsonify({'error': 'Missing text or era'}), 400
     
-    translated_text = text_translator.translate(text, era)
-    return jsonify({'translated_text': translated_text})
+    text = data['text']
+    era = data['era']
+    
+    try:
+        # Replace OpenAI call with Gemini
+        translated_text = gemini_service.translate_text_to_era(text, era)
+        return jsonify({'translated_text': translated_text})
+    except Exception as e:
+        return jsonify({'error': f'Translation error: {str(e)}'}), 500
 
 @app.route('/transform-image', methods=['POST'])
 def transform_image():
@@ -88,11 +97,18 @@ def detect_era():
 @app.route('/rate-cringe', methods=['POST'])
 def rate_cringe():
     data = request.json
-    content = data.get('content', '')
-    era = data.get('era', '2000s')
+    if not data or 'content' not in data or 'era' not in data:
+        return jsonify({'error': 'Missing content or era'}), 400
     
-    rating = cringe_meter.rate(content, era)
-    return jsonify({'rating': rating})
+    content = data['content']
+    era = data['era']
+    
+    try:
+        # Replace OpenAI call with Gemini
+        rating = gemini_service.rate_cringe(content, era)
+        return jsonify({'rating': rating})
+    except Exception as e:
+        return jsonify({'error': f'Rating error: {str(e)}'}), 500
 
 @app.route('/detect-image-era', methods=['POST'])
 def detect_image_era():
@@ -115,10 +131,11 @@ def analyze_image():
     image = request.files['image']
     
     try:
-        analysis = vision_service.analyze_image(image)
+        # Use Gemini Vision to analyze image
+        analysis = gemini_service.analyze_image_context(image)
         return jsonify(analysis)
     except Exception as e:
-        return jsonify({'error': f'Error analyzing image: {str(e)}'}), 500
+        return jsonify({'error': f'Image analysis error: {str(e)}'}), 500
 
 @app.route('/speech-to-text', methods=['POST'])
 def speech_to_text():
