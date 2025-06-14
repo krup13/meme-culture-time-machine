@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -54,26 +55,31 @@ body {
     background: linear-gradient(to right, #3498db, #2c3e50);
     border-radius: 8px;
     padding: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .era-tab {
     padding: 12px 25px;
     font-size: 1.1rem;
     border: none;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 6px;
+    font-weight: 500;
+    margin: 4px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .era-tab.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
     font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .era-tab:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Navigation */
@@ -86,16 +92,21 @@ body {
 
 .nav-tab {
     padding: 10px 20px;
-    background-color: #fff;
+    background-color: #444;
+    color: #fff;
     border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 500;
+    margin: 0 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-tab:hover, .nav-tab.active {
+    background-color: #666;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Section Styling */
@@ -171,9 +182,13 @@ select {
 .result-box {
     background-color: #f9f9f9;
     border-radius: 6px;
-    padding: 15px;
+    padding: 20px;
     min-height: 100px;
     margin-top: 15px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 1.05rem;
+    line-height: 1.5;
 }
 
 .error-message {
@@ -184,27 +199,44 @@ select {
     font-size: 0.9rem;
 }
 
+.translated-text {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    white-space: pre-wrap;
+}
+
 /* Cringe Meter */
 .cringe-meter {
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 .cringe-meter-label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: #fff;
 }
 
 .meter-bar {
     height: 12px;
-    background-color: #eee;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .meter-fill {
     height: 100%;
     background: linear-gradient(to right, #2ecc71, #f39c12, #e74c3c);
-    width: 75%; /* Adjust based on actual value */
+    width: 75%; /* Will be set dynamically */
+    border-radius: 10px;
+    transition: width 0.5s ease;
 }
 
 /* Image Section */
@@ -241,6 +273,101 @@ select {
     font-size: 2rem;
     color: #bbb;
     margin-bottom: 10px;
+}
+
+/* Era-specific themes */
+/* 1990s - Vaporwave theme */
+body.era-1990s {
+    background: linear-gradient(to right, #ff00cc, #3333ff);
+    color: #ffffff;
+}
+
+body.era-1990s .container {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid #00ffff;
+}
+
+body.era-1990s .section {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+body.era-1990s .app-title {
+    font-family: 'Arial', sans-serif;
+    text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff;
+}
+
+/* 2000s - MySpace theme */
+body.era-2000s {
+    background-color: #f0f2f5;
+    color: #333333;
+}
+
+body.era-2000s .section {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+body.era-2000s .app-title {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #3366cc;
+}
+
+/* 2010s - Tumblr/Instagram theme */
+body.era-2010s {
+    background-color: #36465d;
+    color: #ffffff;
+}
+
+body.era-2010s .container {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.era-2010s .section {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.era-2010s .section-title {
+    color: #444444;
+}
+
+body.era-2010s .app-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #ffffff;
+}
+
+/* 2020s - Modern minimalist theme */
+body.era-2020s {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.era-2020s .container {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.era-2020s .section {
+    background-color: #1e1e1e;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.era-2020s .app-title {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.era-2020s button.primary {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border-radius: 8px;
 }
 
 /* Media queries for responsiveness */

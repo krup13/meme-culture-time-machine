@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-import os
 from dotenv import load_dotenv
-from models.text_model import TextTranslator
 from models.image_model import ImageTransformer
 from models.voice_model import VoiceConverter
 from models.meme_generator import MemeGenerator
@@ -10,6 +8,7 @@ from utils.era_detector import EraDetector
 from utils.cringe_meter import CringeMeter
 from services.google_services import GoogleVisionService, GoogleSpeechService, YouTubeService
 from services.gemini_service import GeminiService
+from models.text_model import TextTranslator
 
 # Load environment variables
 load_dotenv()
@@ -35,21 +34,56 @@ gemini_service = GeminiService()  # Replace OpenAI with Gemini
 def index():
     return render_template('index.html')
 
-@app.route('/translate-text', methods=['POST'])
+@app.route('/translate', methods=['POST'])
 def translate_text():
-    data = request.json
-    if not data or 'text' not in data or 'era' not in data:
-        return jsonify({'error': 'Missing text or era'}), 400
-    
-    text = data['text']
-    era = data['era']
-    
     try:
-        # Replace OpenAI call with Gemini
-        translated_text = gemini_service.translate_text_to_era(text, era)
-        return jsonify({'translated_text': translated_text})
+        # Get data from request
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        text = data.get('text', '')
+        era = data.get('era', '2000s')
+        
+        if not text:
+            return jsonify({"error": "No text provided"}), 400
+        
+        print(f"Received translation request - Text: '{text}', Era: {era}")
+        
+        # Use the actual TextTranslator instance
+        translated = text_translator.translate(text, era)
+        
+        # Calculate mock cringe score
+        import random
+        cringe_score = random.randint(65, 95)
+        
+        response_data = {
+            "translated": translated,
+            "cringe_score": cringe_score,
+            "original": text,
+            "era": era
+        }
+        
+        print(f"Translation successful: {translated[:30]}...")
+        return jsonify(response_data)
+        
     except Exception as e:
-        return jsonify({'error': f'Translation error: {str(e)}'}), 500
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Error in translate_text: {str(e)}")
+        print(f"Error details: {error_details}")
+        return jsonify({"error": "Server error: Could not translate text"}), 500
+
+def mock_translate(text, era):
+    """Provide reliable mock translations without external dependencies"""
+    if era == "1990s":
+        return f"<<< {text} >>> LOL!! *dials up modem sounds* ASL?? ~*~Only 90s kids will understand~*~ BRB, mom needs the phone line!!"
+    elif era == "2000s":
+        return f"~*~*{text}*~*~ roflmao!! xD :P (8) msn messenger status (8) brb g2g ttyl l8r sk8r"
+    elif era == "2010s":
+        return f"I can't even... {text} #blessed #nofilter #yolo #swag #tbt *insert instagram filter* literally dying rn"
+    else:  # 2020s
+        return f"no cap fr fr {text} 💀💅 *emotional damage* POV: you're reading this in 2023, vibing, it's giving main character energy"
 
 @app.route('/transform-image', methods=['POST'])
 def transform_image():
@@ -166,4 +200,4 @@ def search_youtube():
         return jsonify({'error': f'Error searching YouTube: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
